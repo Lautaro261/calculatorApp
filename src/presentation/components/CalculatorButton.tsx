@@ -1,11 +1,26 @@
 import React from 'react';
 import {Text, Pressable} from 'react-native';
-import { globalStyles } from '../../config/theme/app-theme';
+import { colors, globalStyles } from '../../config/theme/app-theme';
 
-export const CalculatorButton = () => {
+interface Props {
+  label: string;
+  color?: string;
+
+}
+
+export const CalculatorButton = ({
+  label,
+  color = colors.darkGray,
+}:Props) => {
+
+
   return (
-    <Pressable style={globalStyles.button}>
-    <Text style={globalStyles.buttonText}>1+</Text>
+    <Pressable style={({pressed})=>({
+      ...globalStyles.button,
+      backgroundColor: color,
+      opacity: (pressed) ? 0.8 : 1
+    })}>
+    <Text style={globalStyles.buttonText}>{label}</Text>
   </Pressable>
   );
 };
