@@ -3,13 +3,32 @@ import {useState} from 'react';
 export const useCalculator = () => {
   const [number, setNumber] = useState('0');
 
+  const clean = () => {
+    setNumber('0');
+  };
+
+
+
+  //Borrar el ultimo numero
+  const deleteOperation = () => {};
+
+
+  // Cambiar el signo
+  const toggleSign = () => {
+    if (number.includes('-')) {
+      return setNumber(number.replace('-', ''));
+    }
+    setNumber('-' + number);
+  };
+
+
+
   const buildNumber = (numberString: string) => {
     //
     if (number.includes('.') && numberString === '.') {
       return;
     }
     if (number.startsWith('0') || number.startsWith('-0')) {
-
       //Validacion:  Punto decimal
       if (numberString === '.') {
         return setNumber(number + numberString);
@@ -40,5 +59,7 @@ export const useCalculator = () => {
 
     //Methods
     buildNumber,
+    clean,
+    toggleSign,
   };
 };
