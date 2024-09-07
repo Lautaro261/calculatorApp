@@ -4,13 +4,28 @@ export const useCalculator = () => {
   const [number, setNumber] = useState('0');
 
   const clean = () => {
-    setNumber('0');
+    return setNumber('0');
   };
 
 
 
   //Borrar el ultimo numero
-  const deleteOperation = () => {};
+  const deleteOperation = () => {
+    let currentSign = '';
+    let temporalNumber = number;
+
+    if(number.includes('-')){
+      currentSign = '-';
+      temporalNumber = number.substring(1); // si tengo -88 va a quitar el "-"  entonces temporalNumber = 88
+    }
+
+  if(temporalNumber.length > 1){
+    return setNumber( currentSign + temporalNumber.slice(0, -1));
+  }
+
+  setNumber('0');
+
+  };
 
 
   // Cambiar el signo
@@ -61,5 +76,6 @@ export const useCalculator = () => {
     buildNumber,
     clean,
     toggleSign,
+    deleteOperation,
   };
 };

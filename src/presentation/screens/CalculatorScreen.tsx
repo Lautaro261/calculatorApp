@@ -11,6 +11,7 @@ export const CalculatorScreen = () => {
     buildNumber,
     toggleSign,
     clean,
+    deleteOperation,
   } = useCalculator();
 
 
@@ -33,7 +34,7 @@ export const CalculatorScreen = () => {
       <View style={globalStyles.row}>
         <CalculatorButton onPress={clean} label="C" color={colors.lightGray} blackText={true}/>
         <CalculatorButton onPress={toggleSign} label="+/-" color={colors.lightGray} blackText={true}/>
-        <CalculatorButton onPress={()=>console.log('del')} label="del" color={colors.lightGray} blackText={true}/>
+        <CalculatorButton onPress={deleteOperation} label="del" color={colors.lightGray} blackText={true}/>
         <CalculatorButton onPress={()=>console.log('/')} label="/" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>
